@@ -28,11 +28,8 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var Server = /** @class */ (function () {
     function Server() {
         this.options = {
-        // useCreateIndex: true,
-        // useMongoClient: true,
-        // useNewUrlParser: true,
-        // useFindAndModify: true,
-        // useUnifiedTopology: true,
+            // useCreateIndex: true,
+            useMongoClient: true,
         };
     }
     // start db
@@ -41,7 +38,7 @@ var Server = /** @class */ (function () {
         mongoose_1.default.set('useNewUrlParser', true);
         mongoose_1.default.set('useFindAndModify', false);
         mongoose_1.default.set('useCreateIndex', true);
-        return mongoose_1.default.connect('mongodb://inventorydb:q1w2e3r4@ds143738.mlab.com:43738/heroku_glgx2dmp');
+        return mongoose_1.default.connect('mongodb://heroku_l11g4rr7:p20kpv4sumta9sgc14em1te27v@ds043262.mlab.com:43262/heroku_l11g4rr7');
     };
     // start router
     Server.prototype.initialRouter = function (routers) {
