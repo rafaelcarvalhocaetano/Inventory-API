@@ -1,6 +1,5 @@
 import * as restify from 'restify';
 import mongoose from 'mongoose';
-import { environmnent } from '../environments/environment';
 import { Router } from '../routers/router';
 
 export class Server {
@@ -8,17 +7,20 @@ export class Server {
   private server: restify.Server;
   private options = {
     // useCreateIndex: true,
-    useMongoClient: true,
+    // useMongoClient: true,
     // useNewUrlParser: true,
     // useFindAndModify: true,
-    useUnifiedTopology: true
+    // useUnifiedTopology: true,
   };
 
 
   // start db
   private initialMongoose() {
-    mongoose.Promise = global.Promise;
-    return mongoose.connect(environmnent.DB, this.options);
+    (mongoose as any).Promise = global.Promise;
+    mongoose.set('useNewUrlParser', true);
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('useCreateIndex', true);
+    return mongoose.connect('mongodb://inventorydb:q1w2e3r4@ds143738.mlab.com:43738/heroku_glgx2dmp');
   }
 
   // start router
@@ -39,7 +41,7 @@ export class Server {
           router.application(this.server); 
         }
         
-        this.server.listen(environmnent.PORT, () => resolver());
+        this.server.listen(3000, () => resolver());
         
       } catch (e) {
         reject(e);

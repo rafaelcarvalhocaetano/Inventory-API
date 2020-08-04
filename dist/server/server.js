@@ -25,21 +25,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
 var restify = __importStar(require("restify"));
 var mongoose_1 = __importDefault(require("mongoose"));
-var environment_1 = require("../environments/environment");
 var Server = /** @class */ (function () {
     function Server() {
         this.options = {
-            // useCreateIndex: true,
-            useMongoClient: true,
-            // useNewUrlParser: true,
-            // useFindAndModify: true,
-            useUnifiedTopology: true
+        // useCreateIndex: true,
+        // useMongoClient: true,
+        // useNewUrlParser: true,
+        // useFindAndModify: true,
+        // useUnifiedTopology: true,
         };
     }
     // start db
     Server.prototype.initialMongoose = function () {
         mongoose_1.default.Promise = global.Promise;
-        return mongoose_1.default.connect(environment_1.environmnent.DB, this.options);
+        mongoose_1.default.set('useNewUrlParser', true);
+        mongoose_1.default.set('useFindAndModify', false);
+        mongoose_1.default.set('useCreateIndex', true);
+        return mongoose_1.default.connect('mongodb://inventorydb:q1w2e3r4@ds143738.mlab.com:43738/heroku_glgx2dmp');
     };
     // start router
     Server.prototype.initialRouter = function (routers) {
@@ -57,7 +59,7 @@ var Server = /** @class */ (function () {
                     var router = routers_1[_i];
                     router.application(_this.server);
                 }
-                _this.server.listen(environment_1.environmnent.PORT, function () { return resolver(); });
+                _this.server.listen(3000, function () { return resolver(); });
             }
             catch (e) {
                 reject(e);
