@@ -8,7 +8,7 @@ export class Server {
   private server: restify.Server;
   private options = {
     // useCreateIndex: true,
-    // useMongoClient: true,
+    useMongoClient: true,
     // useNewUrlParser: true,
     // useFindAndModify: true,
     useUnifiedTopology: true
