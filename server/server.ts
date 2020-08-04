@@ -20,7 +20,7 @@ export class Server {
     mongoose.set('useNewUrlParser', true);
     mongoose.set('useFindAndModify', false);
     mongoose.set('useCreateIndex', true);
-    return mongoose.connect('mongodb://inventorydb:q1w2e3r4@ds143738.mlab.com:43738/heroku_glgx2dmp');
+    return mongoose.connect('mongodb://heroku_813dtxld:1ra9p9s0uv0agl77fs9sptm9ip@ds139781.mlab.com:39781/heroku_813dtxld');
   }
 
   // start router
