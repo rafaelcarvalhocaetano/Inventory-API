@@ -5,7 +5,7 @@ export abstract class Router {
   abstract application(http: restify.Server): void;
 
   callbackRouter(resp: restify.Response, next: restify.Next) {
-    return (document) => {
+    return (document: any) => {
       if (document) {
         resp.json(document);
       } else {
