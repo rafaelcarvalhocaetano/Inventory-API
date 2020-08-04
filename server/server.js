@@ -54,6 +54,7 @@ var Server = /** @class */ (function () {
                 });
                 _this.server.use(restify.plugins.bodyParser());
                 _this.server.use(restify.plugins.queryParser());
+                _this.server.use(restify.plugins.authorizationParser());
                 // routers
                 for (var _i = 0, routers_1 = routers; _i < routers_1.length; _i++) {
                     var router = routers_1[_i];

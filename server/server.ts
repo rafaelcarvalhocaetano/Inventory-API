@@ -35,6 +35,7 @@ export class Server {
 
         this.server.use(restify.plugins.bodyParser());
         this.server.use(restify.plugins.queryParser());
+        this.server.use(restify.plugins.authorizationParser());
 
         // routers
         for (const router of routers) {
