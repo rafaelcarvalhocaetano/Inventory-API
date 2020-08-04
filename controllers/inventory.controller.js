@@ -23,7 +23,7 @@ var InventoryController = /** @class */ (function (_super) {
     }
     InventoryController.prototype.application = function (http) {
         var _this = this;
-        http.get('/inventory', function (req, resp, next) {
+        http.get('/', function (req, resp, next) {
             inventory_schemas_1.inventoryRepository.find().then(function (x) {
                 if (x) {
                     resp.json(x);
@@ -33,21 +33,21 @@ var InventoryController = /** @class */ (function (_super) {
                 }
             });
         });
-        http.get('/inventory/:id', function (req, resp, next) {
+        http.get('/:id', function (req, resp, next) {
             inventory_schemas_1.inventoryRepository.findById(req.params.id).then(function (x) { return _this.callbackRouter; });
         });
-        http.post('/inventory', function (req, resp, next) {
+        http.post('/', function (req, resp, next) {
             var item = new inventory_schemas_1.inventoryRepository(req.body);
             item.save().then(function (x) { return _this.callbackRouter; });
         });
-        http.put('/inventory/:id', function (req, resp, next) {
+        http.put('/:id', function (req, resp, next) {
             var options = { overwrite: true };
             inventory_schemas_1.inventoryRepository.update({ _id: req.params.id }, req.body, options).exec().then(function (x) { return _this.callbackRouter; }).then(function (x) {
                 resp.json(x);
                 return next();
             });
         });
-        http.del('/inventory/:id', function (req, resp, next) {
+        http.del('/:id', function (req, resp, next) {
             inventory_schemas_1.inventoryRepository.remove({ _id: req.params.id }).exec().then(function (x) { return _this.callbackRouter; });
         });
     };
