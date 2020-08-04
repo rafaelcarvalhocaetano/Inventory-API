@@ -2,15 +2,15 @@
   "name": "api_inventory",
   "version": "1.0.0",
   "description": "API INVENTORY FOR APP FLUTTER",
-  "main": "main.js",
+  "main": "./dist/main.js",
   "engines": {
     "node": "12.16.1",
     "npm": "6.13.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm cache clean --force && tsc",
-    "heroku-postbuild": "nodemon ./dist/main.js"
+    "start": "rm -rf node_modules && npm cache clean --force && tsc && nodemon main.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
