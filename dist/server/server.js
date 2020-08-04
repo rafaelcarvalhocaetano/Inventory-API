@@ -30,7 +30,7 @@ var Server = /** @class */ (function () {
     function Server() {
         this.options = {
             // useCreateIndex: true,
-            // useMongoClient: true,
+            useMongoClient: true,
             // useNewUrlParser: true,
             // useFindAndModify: true,
             useUnifiedTopology: true
