@@ -28,17 +28,20 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var Server = /** @class */ (function () {
     function Server() {
         this.options = {
-            // useCreateIndex: true,
-            useMongoClient: true,
+        // useCreateIndex: true,
+        // useMongoClient: true,
+        // useNewUrlParser: true,
+        // useFindAndModify: true,
+        // useUnifiedTopology: true,
         };
     }
     // start db
     Server.prototype.initialMongoose = function () {
         mongoose_1.default.Promise = global.Promise;
-        mongoose_1.default.set('useNewUrlParser', true);
-        mongoose_1.default.set('useFindAndModify', false);
-        mongoose_1.default.set('useCreateIndex', true);
-        mongoose_1.default.set('useMongoClient', true);
+        // mongoose.set('useNewUrlParser', true);
+        // mongoose.set('useFindAndModify', false);
+        // mongoose.set('useCreateIndex', true);
+        // mongoose.set('useMongoClient', true);
         return mongoose_1.default.connect('mongodb://heroku_l11g4rr7:p20kpv4sumta9sgc14em1te27v@ds043262.mlab.com:43262/heroku_l11g4rr7');
     };
     // start router

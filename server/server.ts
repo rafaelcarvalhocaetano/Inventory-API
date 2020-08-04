@@ -7,7 +7,7 @@ export class Server {
   private server: restify.Server;
   private options = {
     // useCreateIndex: true,
-    useMongoClient: true,
+    // useMongoClient: true,
     // useNewUrlParser: true,
     // useFindAndModify: true,
     // useUnifiedTopology: true,
@@ -17,10 +17,10 @@ export class Server {
   // start db
   private initialMongoose() {
     (mongoose as any).Promise = global.Promise;
-    mongoose.set('useNewUrlParser', true);
-    mongoose.set('useFindAndModify', false);
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useMongoClient', true);
+    // mongoose.set('useNewUrlParser', true);
+    // mongoose.set('useFindAndModify', false);
+    // mongoose.set('useCreateIndex', true);
+    // mongoose.set('useMongoClient', true);
     return mongoose.connect('mongodb://heroku_l11g4rr7:p20kpv4sumta9sgc14em1te27v@ds043262.mlab.com:43262/heroku_l11g4rr7');
   }
 
