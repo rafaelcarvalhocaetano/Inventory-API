@@ -2,10 +2,11 @@
   "name": "api_inventory",
   "version": "1.0.0",
   "description": "API INVENTORY FOR APP FLUTTER",
-  "main": "./dist/main.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "clear && npm cache clean --force && rm -rf ./dist && tsc && nodemon ./dist/main.js"
+    "start": "clear && npm cache clean --force && rm -rf ./dist && tsc && nodemon ./dist/main.js",
+    "start:dev": "nodemon ./dist/main.js"
   },
   "repository": {
     "type": "git",
