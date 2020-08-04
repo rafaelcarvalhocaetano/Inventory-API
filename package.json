@@ -1,0 +1,31 @@
+{
+  "name": "api_inventory",
+  "version": "1.0.0",
+  "description": "API INVENTORY FOR APP FLUTTER",
+  "main": "./dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rm -rf ./dist && tsc && nodemon ./dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelcarvalhocaetano/Api_Inventory.git"
+  },
+  "author": "Rafael Carvalho Caetano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelcarvalhocaetano/Api_Inventory/issues"
+  },
+  "homepage": "https://github.com/rafaelcarvalhocaetano/Api_Inventory#readme",
+  "dependencies": {
+    "@types/mongoose": "^5.7.34",
+    "mongoose": "^5.9.16",
+    "nodemon": "^2.0.4",
+    "restify": "^8.5.1",
+    "restify-errors": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/restify": "^8.4.2",
+    "@types/restify-errors": "^4.3.3"
+  }
+}
