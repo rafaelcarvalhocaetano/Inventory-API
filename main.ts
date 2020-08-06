@@ -1,5 +1,5 @@
-import { Server } from "./server/server";
-import { IInventory } from "./controllers/inventory.controller";
+import { Server } from './server';
+import { environment } from './environment/environment';
 
 const server = new Server();
-server.initialize([IInventory]).then(() => console.log(' SERVER INITIALIZE'));
+server.app.listen(environment.PORT, () => console.log(' API - INVENTORY '));

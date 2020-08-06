@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-export interface Inventory extends mongoose.Document {
+export interface Inventory {
   qr_code: string;
   item_value: string;
   description: string;

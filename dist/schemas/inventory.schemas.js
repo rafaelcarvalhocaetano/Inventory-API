@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.inventoryRepository = void 0;
+exports.InventorySchema = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const inventorySchema = new mongoose_1.default.Schema({
+exports.InventorySchema = new mongoose_1.default.Schema({
     qr_code: {
         type: String,
         unique: true
@@ -23,4 +23,3 @@ const inventorySchema = new mongoose_1.default.Schema({
         type: String
     }
 });
-exports.inventoryRepository = mongoose_1.default.model('items', inventorySchema);

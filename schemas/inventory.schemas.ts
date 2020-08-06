@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
-import { Inventory } from '../models/inventory';
 
-
-const inventorySchema = new mongoose.Schema({
+export const InventorySchema = new mongoose.Schema({
   qr_code: {
     type: String,
     unique: true
@@ -20,5 +18,3 @@ const inventorySchema = new mongoose.Schema({
     type: String
   }
 });
-
-export const inventoryRepository = mongoose.model<Inventory>('items', inventorySchema);

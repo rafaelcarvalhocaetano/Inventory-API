@@ -1,45 +1,53 @@
-import * as restify from 'restify';
+import { InventoryService } from "../services/inventory-service";
+import HttpStatus from 'http-status';
+import { Response } from "../util/response";
 
-import { Router } from '../routers/router';
-import { inventoryRepository } from '../schemas/inventory.schemas';
+class IController {
 
+  async findAll(req, resp) {
+    try {
+      const data = await InventoryService.findAllInventory();
+      Response.sendResponse(resp, HttpStatus.OK, data);
+    } catch (e) {
+      console.error.bind(console, `DEU RUIM ${e}`)
+    }
+  }
 
-class InventoryController extends Router {
+  async findById(req, resp) {
+    try {
+      const data = await InventoryService.findByIdInventory(req.params.id);
+      Response.sendResponse(resp, HttpStatus.OK, data)
+    } catch (e) {
+      console.error.bind(console, `DEU RUIM ${e}`)
+    }
+  }
 
-  application(http: restify.Server): void {
-    
-    http.get('/', (req, resp, next) => {
-      inventoryRepository.find().then(x => {
-        if (x) {
-          resp.json(x);
-        } else {
-          resp.send(404);
-        }
-      });
-    });
+  async create(req, resp) {
+    try {
+      const data = await InventoryService.createInventory(req.body);
+      Response.sendResponse(resp, HttpStatus.OK, 'Item Cadastro com sucesso!!!!');
+    } catch (e) {
+      console.error.bind(console, `DEU RUIM ${e}`)
+    }
+  }
 
-    http.get('/:id', (req, resp, next) => {
-      inventoryRepository.findById(req.params.id).then(x => this.callbackRouter);
-    });
+  async update(req, resp) {
+    try {
+      const data = await InventoryService.updateInventory(req.params.id, req.body);
+      Response.sendResponse(resp, HttpStatus.OK, data)
+    } catch (e) {
+      console.error.bind(console, `DEU RUIM ${e}`)
+    }
+  }
 
-    http.post('/', (req, resp, next) => {
-      const item = new inventoryRepository(req.body);
-      item.save().then(x => this.callbackRouter);
-    });
-
-    http.put('/:id', (req, resp, next) => {
-      const options = { overwrite: true };
-      inventoryRepository.update({_id: req.params.id }, req.body, options).exec().then((x: any) => this.callbackRouter).then(x => {
-        resp.json(x);
-        return next();
-      });
-    });
-
-    http.del('/:id', (req, resp, next) => {
-      inventoryRepository.remove({_id: req.params.id}).exec().then(x => this.callbackRouter);
-    });
-
+  async delete(req, resp) {
+    try {
+      const data = await InventoryService.deleteByIdInventory(req.params.id);
+      Response.sendResponse(resp, HttpStatus.OK, 'Item deletado....');
+    } catch (e) {
+      console.error.bind(console, `DEU RUIM ${e}`)
+    }
   }
 }
 
-export const IInventory = new InventoryController();
+export const InventoryController = new IController();
