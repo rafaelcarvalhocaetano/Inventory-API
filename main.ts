@@ -1,5 +1,4 @@
 import { Server } from './server';
-import { environment } from './environment/environment';
 
 const server = new Server();
-server.app.listen(environment.PORT, () => console.log(' API - INVENTORY '));
+server.app.listen(process.env.PORT, () => console.log(' API - INVENTORY '));
